@@ -45,11 +45,12 @@ async function startDisplay(sheetsUrl, delay) {
         await sleepAndUpdateLoadingBar(delay, loadingBar)
     }
 }
-async function downloadHtml(sheetsURL) {
 
-    console.log("Loading from: ".concat(sheetsURL))
+async function downloadHtml(url) {
 
-    const corsURL = "https://cors-anywhere.herokuapp.com/".concat(sheetsURL);
+    console.log("Loading from: ".concat(url))
+
+    const corsURL = "https://cors-anywhere.herokuapp.com/".concat(url);
 
     return fetch(corsURL)
     .then((response) => response.text())
