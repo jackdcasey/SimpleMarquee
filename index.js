@@ -41,7 +41,8 @@ async function startDisplay(sheetsUrl, delay) {
             displayQueue = newData
         }
 
-        await sleep(delay * 1000)
+        var loadingBar = document.getElementById('loadingBar');
+        await sleepAndUpdateLoadingBar(delay, loadingBar)
     }
 }
 async function downloadHtml(sheetsURL) {
@@ -109,4 +110,14 @@ function showOutput() {
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function sleepAndUpdateLoadingBar(delay, loadingBar) {
+
+    interval = delay
+
+    for (i = 1; i < 1001; i++){
+        loadingBar.style.width = (i / 10) + "%"
+        await sleep(interval)
+    }
 }

@@ -4,11 +4,6 @@ html, body {
     overflow: hidden;
 }
 
-table {
-    font-family: monospace;
-    margin: 0 auto;
-}
-
 #outputParagraph {
     font-size: 4vw;
 
@@ -19,6 +14,18 @@ table {
 
     margin-left: 2%;
     margin-right: 2%;
+}
+
+#outputDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+#loadingBar {
+    height: 3%;
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    margin-top: auto;
 }
 
 .height60 {
@@ -52,8 +59,4 @@ table {
 .border {
     border: 1px solid #D1D1D1;
     border-radius: 4px;
-}
-
-.sideBySideForm{
-    display: inline-block;
 }
