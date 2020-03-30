@@ -10,7 +10,7 @@ table {
 }
 
 #outputParagraph {
-    font-size: x-large;
+    font-size: 4vw;
 
     height: 100%;
     display: flex;
@@ -52,4 +52,8 @@ table {
 .border {
     border: 1px solid #D1D1D1;
     border-radius: 4px;
+}
+
+.sideBySideForm{
+    display: inline-block;
 }

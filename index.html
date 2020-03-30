@@ -18,9 +18,19 @@
 
         <div class="row height60 hidden" id="inputDiv">
             <div class="twelve columns">
-                <label for="urlInput">Enter Google Sheets URL</label>
-                <input class="u-full-width" type="text" placeholder="https://docs.google.com/spreadsheets/..." id="urlInput">
-                <input class="button-primary" type="button" value="Enter" onclick="urlEnter()">
+                <form>
+                    <div class="ten columns">
+                    <label for="urlInput">Google Sheets URL</label>
+                    <input class="u-full-width" type="text" placeholder="https://docs.google.com/spreadsheets/..." id="urlInput">
+                    </div>
+                    <div class="two columns">
+                    <label for="delayInput">Delay (seconds)</label>
+                    <input class="u-full-width" type="number" min="1" max="120" value="10" id="delayInput">
+                    </div>
+                    <div class="twelve columns">
+                        <input class="button-primary" type="button" value="Start!" onclick="urlEnter()">
+                    </div>
+                </form>
             </div>
         </div>
 

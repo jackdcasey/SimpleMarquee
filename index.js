@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if ('url' in params) {
         var sheetsURL = getUrlVars()['url'];
+        var delay = getUrlVars()['delay'];
 
         showOutput();
-        startDisplay(sheetsURL);
+        startDisplay(sheetsURL, delay);
     }
     else {
         showInput();
@@ -14,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function urlEnter() {
-    window.location.href = window.location.href + "?url=" + document.getElementById('urlInput').value;
+    window.location.href = window.location.href + "?url=" + document.getElementById('urlInput').value + "&delay=" + document.getElementById('delayInput').value;
 }
 
-async function startDisplay(sheetsUrl) {
+async function startDisplay(sheetsUrl, delay) {
 
     displayText = document.getElementById('outputParagraph');
     displayTitle = document.getElementById('title')
@@ -40,7 +41,7 @@ async function startDisplay(sheetsUrl) {
             displayQueue = newData
         }
 
-        await sleep(10000)
+        await sleep(delay * 1000)
     }
 }
 async function downloadHtml(sheetsURL) {
@@ -62,8 +63,12 @@ function convertSheetsPage(sheetsPage) {
     let document = parser.parseFromString(sheetsPage, 'text/html');
 
     linesOut = []
+    try {
+        linesOut.push(document.querySelector('meta[property="og:title"]').content);
+    } catch (error) {
+        linesOut.push("Simple Marquee")
+    }
 
-    linesOut.push(document.querySelector('meta[property="og:title"]').content);
 
     let lines = document.querySelectorAll('td[dir="ltr"]');
 
